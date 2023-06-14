@@ -36,7 +36,7 @@
  }
  .drops-menu{
     /* background: #1289A7; */
-    background-color: #D0425C;
+    background-color: #032831;
     /* color:white !important; */
  }
  .down-color{
@@ -118,3 +118,87 @@
 .toggle-menu li:hover{
     margin-left: 5px;
 }
+
+@media only screen and  (min-width:1824px) {
+    .toggle-menu{
+        width: 150px;
+        /* background-color: #51a5b9; */
+        background-color: #032831;
+        position: absolute;
+        right: 160px !important;
+        margin-top: 20px;
+        /* margin: 60px; */
+        bottom: -65px;
+        display: none;
+        z-index: 150;
+        border-radius: 5px;
+        padding: 5px 0;
+    }
+   
+    
+};
+
+
+
+
+
+@media only screen and  (min-width:1624px) {
+    .toggle-menu{
+        width: 150px;
+        /* background-color: #51a5b9; */
+        background-color: #7E2231;
+        position: absolute;
+        right: 10px !important;
+        margin-top: 20px;
+        /* margin: 60px; */
+        bottom: -65px;
+        display: none;
+        z-index: 150;
+        border-radius: 5px;
+        padding: 5px 0;
+    }
+   
+    
+};
+
+
+
+
+
+@media only screen and  (min-width:1524px) {
+    .toggle-menu{
+        width: 150px;
+        /* background-color: #51a5b9; */
+        background-color: #7E2231;
+        position: absolute;
+        right: 60px !important;
+        margin-top: 20px;
+        /* margin: 60px; */
+        bottom: -65px;
+        display: none;
+        z-index: 150;
+        border-radius: 5px;
+        padding: 5px 0;
+    }
+   
+    
+};
+
+@media only screen and  (min-width:1324px) {
+    .toggle-menu{
+        width: 150px;
+        /* background-color: #51a5b9; */
+        background-color: #7E2231;
+        position: absolute;
+        right: 90px !important;
+        margin-top: 20px;
+        /* margin: 60px; */
+        bottom: -65px;
+        display: none;
+        z-index: 150;
+        border-radius: 5px;
+        padding: 5px 0;
+    }
+   
+    
+};

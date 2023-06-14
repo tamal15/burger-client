@@ -9,7 +9,7 @@ const MakeAdmin = () => {
     }
     const handleAdmin=e=>{
         const user={email}
-        fetch('http://localhost:5000/userLogin/admin',{
+        fetch('https://burger-backend-production.up.railway.app/userLogin/admin',{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

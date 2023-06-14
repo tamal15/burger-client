@@ -15,7 +15,7 @@ const Partner = () => {
           py: 5,
           textAlign: "left",
           fontWeight: "500",
-          color: "white",
+          color: "black",
           marginBottom:"20px"
         }}
       >

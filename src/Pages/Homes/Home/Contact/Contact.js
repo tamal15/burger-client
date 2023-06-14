@@ -13,7 +13,7 @@ const Contact = () => {
     const onSubmit= (data) =>{
         // console.log(data)
       
-        axios.post('http://localhost:5000/contact',data)
+        axios.post('https://burger-backend-production.up.railway.app/contact',data)
       .then(res=>{
           console.log(res)
            if(res.data.insertedId){
@@ -26,18 +26,19 @@ const Contact = () => {
     return (
         <div>
             <Header></Header>
-             <section id="contact us" class="contact-us">
+<div>
+<section id="contact us" class="contact-us">
       <h1>Contact US</h1>
 
      
 
-     <div className="row">
+     <div className="row" >
          <div className="contact-col">
              <div>
              <i class="fas fa-home"></i>
                  <span>
                      {/* <h5> House-20, Road-27, Block-A</h5> */}
-                     <h5>Gazipur, Dhaka</h5>
+                     <h5>Dhanmondi, Dhaka</h5>
                  </span>
 
              </div>
@@ -45,7 +46,7 @@ const Contact = () => {
              <div>
               <i className="fas fa-home"></i>
               <span>
-                  <h5>Online Shop(T.G.)</h5>
+                  <h5>PIZZAHUB</h5>
               
               </span>
 
@@ -55,7 +56,7 @@ const Contact = () => {
                  <i className="fas fa-envelope"></i>
                  <span>
                      {/* <h5>info@marufultamal.com</h5> */}
-                     <h5>Texttail@gmail.com</h5>
+                     <h5>Shuvo@gmail.com</h5>
                  </span>
 
              </div>
@@ -63,7 +64,7 @@ const Contact = () => {
              <div>
                  <i className="fa fa-phone"></i>
                  <span>
-                     <h5>+88017315245235</h5>
+                     <h5>+8802284494933</h5>
                      {/* <p>Tuesday to sunday, 10AM TO 6PM</p> */}
                  </span>
 
@@ -122,6 +123,7 @@ const Contact = () => {
     </div> */}
 
  </section>
+</div>
 
  <Footer></Footer>
 

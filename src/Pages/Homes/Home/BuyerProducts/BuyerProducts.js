@@ -20,6 +20,7 @@ import {
   } from "@mui/material";
 import { CartContext } from '../../../../contextsCard/CartContext';
 import useAuth from '../../../../hooks/useAuth';
+import Swal from 'sweetalert2';
 // import { CartContext } from '../../../Context/CartContext';
 // import useAuth from '../../../Hooks/useAuth';
 // import { CartContext } from '../../../contexts/CartContext';
@@ -47,7 +48,10 @@ const BuyerProducts = () => {
         }
         localStorage.setItem("productCart", JSON.stringify(newCart));
         setCart(() => newCart);
-        alert('Add to Cart Successfully');
+        Swal.fire(
+          'Success Product!',
+          
+      )
     };
 
     //     useEffect(()=>{
@@ -55,7 +59,7 @@ const BuyerProducts = () => {
     //   },[])
 
     const fetchData = () => {
-      fetch('http://localhost:5000/PostUploadBuyer')
+      fetch('https://burger-backend-production.up.railway.app/PostUploadBuyer')
         .then(res => res.json())
         // .then(data => setWork(data))
         .then(data => {
@@ -72,7 +76,7 @@ const BuyerProducts = () => {
 
 
     // const handleLike = (id) => {
-    //   fetch(`https://boiling-coast-70144.herokuapp.com/like/${id}`, {
+    //   fetch(`https://burger-backend-production.up.railway.app/like/${id}`, {
     //     method: "PUT",
     //     headers: { "content-type": "application/json" },
     //     body: JSON.stringify(userData)
@@ -91,7 +95,7 @@ const BuyerProducts = () => {
   
     // }
     // const handleUnLike = (id) => {
-    //   fetch(`https://boiling-coast-70144.herokuapp.com/unlike/${id}`, {
+    //   fetch(`https://burger-backend-production.up.railway.app/unlike/${id}`, {
     //     method: "PUT",
     //     headers: { "content-type": "application/json" },
     //     body: JSON.stringify(userData)
@@ -158,6 +162,10 @@ const BuyerProducts = () => {
                         <h5 style={{ fontWeight: 700 }}> price : TK.{single?.ProductPrice}</h5>
                         
                       </Typography>
+                      <Typography variant="body">
+                        <h5 style={{ fontWeight: 700 }}> Code : {single?.code}</h5>
+                        
+                      </Typography>
                     
                       <Rating
                         name="half-rating-read"
@@ -198,7 +206,7 @@ const BuyerProducts = () => {
                     </Button>
                   </NavLink>
                   <NavLink
-                    to={`/bookDetails/${single._id}`}
+                    to={`/Detailshow/${single._id}`}
                     className="details-show"
                     style={{ textDecoration: "none", marginRight: "4px" }}
                   >

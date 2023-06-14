@@ -129,6 +129,18 @@
 .brands{
     text-align: left;
 }
+.checkdesign{
+    font-size: 25px;
+}
+
+.orderColor{
+    color: #46AADC;
+    font-size: 27px;
+}
+
+.orderDesign{
+    background-color: black;
+}
 
 /* .all{
     margin-left: 10px;

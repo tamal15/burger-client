@@ -3,6 +3,8 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cart from '../../../../ComponentsCardDesign/Cart';
 import { CartContext } from '../../../../contextsCard/CartContext';
+import Footer from '../Shared/Footer/Footer';
+import Header from '../Shared/Header/Header';
 // import Cart from '../../ComponentCart/Cart';
 // import { CartContext } from '../../contexts/CartContext';
 // import Cart from '../../Components/Cart';
@@ -28,7 +30,9 @@ const OrderReview = () => {
 
 
     return (
-        <Container>
+     <div>
+        <Header></Header>
+           <Container>
             <br />
             <Grid container spacing={2} columns={{ xs: 12, sm: 6, md: 6 }}>
                 <Grid item xs={12} sm={3} md={3}>
@@ -48,7 +52,7 @@ const OrderReview = () => {
                                         <Grid item xs={2} sm={4} md={7}>
                                             <CardMedia
                                                 component="img"
-                                                sx={{ objectFit: "cover", height: 200, width: "auto" }}
+                                                sx={{ objectFit: "cover", height: 200, width: 260}}
                                                 alt="complex"
                                                 src={cart?.img}
                                             />
@@ -104,6 +108,8 @@ const OrderReview = () => {
                 </Grid>
             </Grid>
         </Container>
+        <Footer></Footer>
+     </div>
     );
 };
 

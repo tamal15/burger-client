@@ -4,7 +4,7 @@ const CustomerInfo = () => {
     const [customer,setCustomer]=useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/contact')
+        fetch('https://burger-backend-production.up.railway.app/contact')
         .then(res=>res.json())
         .then(data=>setCustomer(data))
     },[])

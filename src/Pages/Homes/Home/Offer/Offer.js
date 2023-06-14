@@ -16,7 +16,7 @@ const Offer = () => {
   <Carousel.Item className="carousel-design values">
   <img
       className="d-block w-100  slide"
-      src="https://www.promotionsinuae.com/wp-content/uploads/2021/08/screenshot_20210808-164353_facebook7574006443792106874-1076x640.jpg"
+      src="https://t3.ftcdn.net/jpg/04/32/40/84/360_F_432408488_CxZTiOV0Bx2bTkXM02ddLyCUfYECVJDX.jpg"
       alt="First slide"
     />
   
@@ -36,7 +36,7 @@ const Offer = () => {
   <Carousel.Item className="carousel-design values">
     <img
       className="d-block w-100  slide"
-      src="https://bh.arabiccoupon.com/sites/default/files/styles/free/public/offers/2019-06-june-_-pizzahut-arabiccoupon-offer-deal-buy1get1free-en_0.jpg"
+      src="https://png.pngtree.com/template/20210915/ourmid/pngtree-newcomers-first-order-discount-banner-creative-black-burger-image_666033.jpg"
       alt="Second slide"
     />
 
@@ -51,7 +51,7 @@ const Offer = () => {
   <Carousel.Item className="carousel-design values">
     <img
       className="d-block w-100  slide"
-      src="https://www.pizzahutbd.com/attached_images/deals/23/Pan-4-All-OLO-Banner.jpg"
+      src="https://png.pngtree.com/png-clipart/20210829/original/pngtree-pizza-restaurant-promotion-black-banner-png-image_6685185.jpg"
       alt="Third slide"
     />
 

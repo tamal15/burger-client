@@ -78,13 +78,13 @@ const DetailsProduct = () => {
     //     setPage(data.selected);
     // }
     useEffect(() => {
-      fetch(`http://localhost:5000/product`)
+      fetch(`https://burger-backend-production.up.railway.app/product`)
         .then((res) => res.json())
         .then((data) => setBook(data));
     }, [branch]);
 
       const handleLike = (id) => {
-        fetch(`https://boiling-coast-70144.herokuapp.com/like/${id}`, {
+        fetch(`https://burger-backend-production.up.railway.app/like/${id}`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userData)
@@ -103,7 +103,7 @@ const DetailsProduct = () => {
     
       }
       const handleUnLike = (id) => {
-        fetch(`https://boiling-coast-70144.herokuapp.com/unlike/${id}`, {
+        fetch(`https://burger-backend-production.up.railway.app/unlike/${id}`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userData)
@@ -128,7 +128,7 @@ const DetailsProduct = () => {
 
 //     useEffect(() => {
 //       // console.log(department, year, semester)
-//       fetch(`https://boiling-coast-70144.herokuapp.com/sharee?page=${page}&&categories=${categories}&&sizing=${sizing}&&warrenty=${warrenty}&&material=${material}&&size=${size}`)
+//       fetch(`https://burger-backend-production.up.railway.app/sharee?page=${page}&&categories=${categories}&&sizing=${sizing}&&warrenty=${warrenty}&&material=${material}&&size=${size}`)
 //           .then(res => res.json())
 //           .then(data => {
 //               setQuestions(data.allQuestions)
@@ -141,7 +141,7 @@ const DetailsProduct = () => {
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch('https://burger-backend-production.up.railway.app/products')
         .then(res=>res.json())
         .then(data=>setModel(data.allData))
     },[])

@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row, Container,Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 
 const BuyerUpload = () => {
@@ -16,7 +17,7 @@ const BuyerUpload = () => {
         // data.status = 'Pending'
      
 
-        fetch("http://localhost:5000/PostUploadBuyer", {
+        fetch("https://burger-backend-production.up.railway.app/PostUploadBuyer", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
@@ -24,7 +25,10 @@ const BuyerUpload = () => {
             .then((res) => res.json())
             .then((result) => {
                 if(result.insertedId){
-                    alert('added successfully');
+                    Swal.fire(
+                        'Success Product!',
+                        
+                    )
                     reset()
                 }
                 
@@ -38,7 +42,7 @@ const BuyerUpload = () => {
             <Container>
                 <Row>
                     <Col md={{ span: 8, offset: 2 }}>
-                        <div className="login-form text-center shadow" style={{background:"#7E2231",borderRadius:"20px"}}>
+                        <div className="login-form text-center shadow" style={{background:"#032831",borderRadius:"20px"}}>
                             <h2 className='mb-5 text-white'>Add Your Buyer Prooduct</h2>
                             <form onSubmit={handleSubmit(onSubmit)}>
 

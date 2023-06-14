@@ -1,0 +1,158 @@
+import React, { useEffect, useState } from 'react';
+import { Box, Chip, Container, Divider, Fab, Grid, TableFooter, TablePagination, Toolbar } from '@mui/material';
+// import CartOrder from './MyBooking';
+// import CustomerAddress from './Address'
+import axios from 'axios';
+
+
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import Swal from 'sweetalert2';
+import useAuth from '../../../../hooks/useAuth';
+import FormData from './FormData';
+// import CustomerAddress from '../../UserDashboard/MyOrder/CustomerAddress';
+import CartOrder from '../../UserDashboard/MyOrder/MyBooking';
+// import useAuth from '../../../../hooks/useAuth';
+// import CustomerAddress from './CustomerAddress';
+// import CartOrder from './CustomerBooking';
+
+
+const ApprovedShareOrder = () => {
+    const [ordering, setOrder] = useState([]);
+    const { user } = useAuth();
+    const [page, setPage] = React.useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(4);
+    const [status, setStatus] = useState('')
+
+    useEffect(()=>{
+        fetch('https://burger-backend-production.up.railway.app/my')
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            setOrder(data)
+        })
+    },[])
+
+
+    const handleUpdate = (id) => {
+        fetch(`https://burger-backend-production.up.railway.app/updateStatus/${id}`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ status }),
+        })
+            .then((res) => res.json())
+            .then((result) => console.log(result));
+        alert('update')
+    }
+
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'white',
+            cancelButtonColor: 'white',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`https://burger-backend-production.up.railway.app/manageAllOrderDelete/${id}`)
+                    .then((response) => {
+                        response.status === 204 &&
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        const deleted = ordering.filter((d) => d._id !== id);
+                        setOrder(deleted)
+                    }).catch((err) => {
+                        console.log(err);
+                    })
+            }
+        })
+    }
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(+event.target.value);
+        setPage(0);
+    };
+    const color = ordering.length === 0 ? "error" : "success"
+    return (
+        <Container>
+            <Toolbar />
+            <Divider>
+                <Fab variant="extended" size="small" color={color} aria-label="add">
+                    <AddShoppingCartIcon />{ordering.length === 0 ? "My Order Not Found" : "Customer Order"}
+                </Fab>
+            </Divider>
+           
+
+          <Box>
+
+           
+
+
+          {
+                ordering?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)?.map(order =>
+                    <Box key={order?._id}>
+
+                        <Grid
+                            container
+                            spacing={2}
+                            sx={{ mt: 6 }}
+                            columns={{ xs: 4, sm: 8, md: 12 }}
+                        >
+
+                            <Grid item xs={4} sm={8} md={7}>
+
+                                <FormData
+                                    order={order}
+                                    handleUpdate={handleUpdate}
+                                    handleDelete={handleDelete}
+                                />
+
+                            </Grid>
+
+                            <Grid sx={{ py: 3 }} item xs={4} sm={8} md={5}>
+
+                                <CartOrder
+                                    cart={order.cartProducts}
+
+                                />
+                            </Grid>
+
+                        </Grid>
+
+                        <Divider >
+                            <Chip label={<AddShoppingCartIcon />} />
+
+                        </Divider>
+                    </Box>
+                )
+            }
+
+
+
+         
+          </Box>
+{/* cartProducts */}
+            <TableFooter>
+                <TablePagination style={{color:"white"}}
+                    rowsPerPageOptions={[5, 10, 15, 20, 25, 30, 40]}
+                    component="div"
+                    count={ordering.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+            </TableFooter>
+        </Container>
+    );
+};
+
+export default ApprovedShareOrder;

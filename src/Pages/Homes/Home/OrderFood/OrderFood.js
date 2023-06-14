@@ -29,7 +29,7 @@ import Footer from '../Shared/Footer/Footer';
 // import Header from '../../../Shared/Header/Header';
 // import Footer from '../../../Shared/Footer/Footer';
 // import '../TaterSharee/TaterSharee.css'
-// import useAuth from '../../../Hooks/useAuth';
+import SearchBar from '../../BurgerShow/SearchBar';
 
 const OrderFood = () => {
 
@@ -59,6 +59,7 @@ const OrderFood = () => {
     const [model, setModel] = useState([]);
    
     const [division,setDivision]=useState("");
+    const [branch,setBranch]=useState("");
     const [sizing,setsizing]=useState("");
     const [warrenty,setwarrenty]=useState("");
     const [material,setmaterial]=useState("");
@@ -75,11 +76,12 @@ const OrderFood = () => {
         setPage(data.selected);
     }
     const fetchData = () => {
-        fetch(`http://localhost:5000/products?page=${page}&&division=${division}&&sizing=${sizing}&&warrenty=${warrenty}&&material=${material}&&size=${size}`)
+        fetch(`https://burger-backend-production.up.railway.app/branch?page=${page}&&division=${division}&&sizing=${sizing}&&warrenty=${warrenty}&&branch=${branch}&&material=${material}&&size=${size}`)
         .then(res => res.json())
         .then(data => {
             setQuestions(data.allData)
             setModel(data.allData)
+            console.log(data.allData)
             const count = data.count;
             const pageNumber = Math.ceil(count / size)
             setPageCount(pageNumber)
@@ -87,10 +89,10 @@ const OrderFood = () => {
       }
       useEffect(() => {
         fetchData()
-      }, [division, page,size,sizing,warrenty,material,size])
+      }, [division, page,size,sizing,warrenty,material,size,branch])
 
       const handleLike = (id) => {
-        fetch(`https://boiling-coast-70144.herokuapp.com/like/${id}`, {
+        fetch(`https://burger-backend-production.up.railway.app/like/${id}`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userData)
@@ -109,7 +111,7 @@ const OrderFood = () => {
     
       }
       const handleUnLike = (id) => {
-        fetch(`https://boiling-coast-70144.herokuapp.com/unlike/${id}`, {
+        fetch(`https://burger-backend-production.up.railway.app/unlike/${id}`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userData)
@@ -132,22 +134,11 @@ const OrderFood = () => {
    
    
 
-//     useEffect(() => {
-//       // console.log(department, year, semester)
-//       fetch(`https://boiling-coast-70144.herokuapp.com/sharee?page=${page}&&categories=${categories}&&sizing=${sizing}&&warrenty=${warrenty}&&material=${material}&&size=${size}`)
-//           .then(res => res.json())
-//           .then(data => {
-//               setQuestions(data.allQuestions)
-//               setModel(data.allQuestions)
-//               const count = data.count;
-//               const pageNumber = Math.ceil(count / size)
-//               setPageCount(pageNumber)
-//           })
-//   }, [categories, page,size,sizing,warrenty,material,size]);
+//    
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch('https://burger-backend-production.up.railway.app/branch')
         .then(res=>res.json())
         .then(data=>setModel(data.allData))
     },[])
@@ -169,11 +160,7 @@ const OrderFood = () => {
       
     }
 
-    // const managePost = questions?.filter(models => models?.role === true);
-    // const managePost = model?.filter(models => models?.categories
-    //     === 'jamdani' || models.role==='admin');
-    // // console.log(model)
-    // console.log(managePost)
+   
     
 
     const  handleSearch=(e)=>{
@@ -188,27 +175,31 @@ const OrderFood = () => {
         // handleValue()
        }
 
+       const placeholder = 'Search by  branch address, example: dhanmondi';
+
+
+       const  handleOnChange=(e)=>{
+        e.preventDefault()
+        const values = e.target.value;
+        const newValue = questions?.filter(ques => ques?.branch?.toLowerCase()?.includes(values.toLowerCase()))
+        // console.log(values)
+        newValue.length === 0 && alert("warning", "Warning...", "Not Found Your Result")
+        setModel(newValue)
+    }
+
     return (
         
     <div>
         {/* <Header></Header> */}
-          <div  style={{background:"black"}}>
+          <div className=''>
             <Header></Header>
           <div className="container text-white mt-5 mb-5">
             <div className="row ">
-                <div className="col-md-4">
-                   
-                </div>
+                
                 <div className="col">
-                    <div className="search-box mb-8">
-                        <form onSubmit={handleValue}>
-                         
-                            <input onBlur={handleSearch} type="text" name='search'
-                            style={{fontWeight:"600"}}
-                            placeholder='Branch Example : dhanmondi  ' />
-                           
-                            <button type='submit'>Search</button>
-                        </form>
+                    <div className=" mb-8">
+                    <SearchBar handleOnChange={handleOnChange} placeholder={placeholder} />
+                       
                     </div>
                 </div>
             </div>
@@ -226,17 +217,17 @@ const OrderFood = () => {
                           model.map((models)=>( */}
                             {/* <div> */}
                            <div className='brands mt-3'>
-                            <h5 style={{fontWeight:"700"}} className='text-white texts-design'>City</h5>
+                            <h5 style={{fontWeight:"700", color:"#46AADC"}} className='text-black texts-design orderColor all checkdesign'>City</h5>
                            <div className="form-check align-items-center me-3">
-                                <input className="form-check-input" type="checkbox" value="dhaka" id="flexCheckDefault" />
-                                <label className="form-check-label fw-bold all text-white me-4" for="flexCheckDefault">
+                                <input className="form-check-input mt-2 checkdesign" type="checkbox" value="Dhaka" id="flexCheckDefault" />
+                                <label className="form-check-label fw-bold all orderColor me-4" for="flexCheckDefault">
                                     Dhaka
                                 </label>
                             </div>
                             <div className="form-check align-items-center me-3">
-                                <input className="form-check-input" type="checkbox" value="chattogram" id="flexCheckDefault" />
-                                <label className="form-check-label fw-bold all me-4 text-white" for="flexCheckDefault">
-                                chattogram
+                                <input className="form-check-input mt-2 checkdesign" type="checkbox" value="Chattogram" id="flexCheckDefault" />
+                                <label className="form-check-label fw-bold all me-4 orderColor" for="flexCheckDefault">
+                                Chattogram
                                 </label>
                             </div>
 
@@ -283,7 +274,7 @@ const OrderFood = () => {
                   <Grid item xs={12} sm={12} md={12}>
                   <div className='photo'>
                     <div className='photoShops'>
-                      <img height="230" width="280" style={{borderRadius:"10px"}} src={single?.branchimg}></img>
+                      <img height="250" width="330" style={{borderRadius:"10px"}} src={single?.branchimg}></img>
                    
                     </div>
                    </div>
@@ -291,6 +282,7 @@ const OrderFood = () => {
                   <Grid item xs={2} sm={4} md={8} pl={2} my={3}>
                     <Box style={{textAlign:"left"}}>
                     <h5 style={{fontWeight:"700"}}>Name : {single?.BranchName}</h5>
+                    <h5 style={{fontWeight:"700"}}>Division : {single?.division}</h5>
 
                      
 
@@ -298,7 +290,7 @@ const OrderFood = () => {
                     
                      
                       <Typography variant="body">
-                        <span style={{ fontWeight: 700 }}> branch : {single?.branch}</span>
+                        <span style={{ fontWeight: 700 }}> Branch : {single?.branch}</span>
                         
                       </Typography>
                       <br />
@@ -311,11 +303,7 @@ const OrderFood = () => {
                       />
 
                         <Box style={{display:"flex"}}>
-                      <Typography  style={{color:"#D0425C",fontWeight:"700"}}>
-                       <ThumbUpIcon className='likedesign' onClick={() => handleLike(single?._id)}></ThumbUpIcon>{single?.likes?.length}
-                       </Typography>
                      
-                      <Typography> <ThumbDownIcon  className='ms-3 likedesign' onClick={() => handleUnLike(single?._id)}></ThumbDownIcon></Typography>
                       </Box>
                     </Box>
                   </Grid>
@@ -323,7 +311,7 @@ const OrderFood = () => {
                 <Box sx={{ display: 'flex', justifyContent: '' }}>
                 
                   <NavLink
-                    to={`/bookDetail`}
+                    to={`/bookDetails/${single._id}`}
                     className=""
                     style={{ textDecoration: "none", marginRight: "" }}
                   >
@@ -335,7 +323,7 @@ const OrderFood = () => {
                     </Button>
                   </NavLink>
                   <NavLink
-                    to={`/pizza`}
+                    to={`/pizzaDetails/${single._id}`}
                     className=""
                     style={{ textDecoration: "none", marginRight: "" }}
                   >
@@ -344,6 +332,19 @@ const OrderFood = () => {
                      style={{padding:"5px"}}
                     size="small">
                       Pizza
+                    </Button>
+                  </NavLink>
+
+                  <NavLink
+                    to={`/pastaDetails/${single._id}`}
+                    className=""
+                    style={{ textDecoration: "none", marginRight: "" }}
+                  >
+                    <Button
+                     className='btn-style download-btn details-show ms-3'
+                     style={{padding:"5px"}}
+                    size="small">
+                      Pasta
                     </Button>
                   </NavLink>
                   {/* <Button

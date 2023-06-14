@@ -1,42 +1,62 @@
 .hero-section {
-    /* position: relative; */
+    position: relative;
     background-image: url("https://media.istockphoto.com/photos/delicious-homemade-hamburger-and-french-fries-picture-id1254672762?b=1&k=20&m=1254672762&s=170667a&w=0&h=nKrG40G2jj9O8wzJ8wDD2zmUKNp00mcdVWK_f_zixug=");
-    /* height: 100vh; */
+    height: 80vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /* z-index: 1; */
+    z-index: 1;
   }
 .hero-section2 {
-    /* position: relative; */
+    position: relative;
     background-image: url("https://img.freepik.com/premium-photo/penne-pasta-tomato-sauce-with-meat-tomatoes-decorated-with-pea-sprouts-dark-table_2829-3411.jpg?w=2000");
     /* background-image: url("https://i.pinimg.com/originals/f3/ca/a3/f3caa3a31100da48c5c09f14063fc9d7.jpg"); */
-    /* height: 100vh; */
+    height: 80vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /* z-index: 1; */
+    z-index: 1;
   }
 .hero-section3 {
-    /* position: relative; */
+    position: relative;
     /* background-image: url("https://kusumsarees.in/files/9156574315048.jpeg"); */
     background-image: url("https://st4.depositphotos.com/4218696/27198/i/1600/depositphotos_271985360-stock-photo-fresh-pepperoni-pizza-on-black.jpg");
-    height: 100vh;
+    height: 80vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /* z-index: 1; */
+    z-index: 1;
   }
  
   .hero-section::before{
-    /* position: absolute; */
+    position: absolute;
     content:"";
     background-color: black;
     width: 100%;
     left: 0;
     height: 100%;
     opacity: .7;
-    /* z-index: -1; */
+    z-index: -1;
+  }
+  .hero-section2::before{
+    position: absolute;
+    content:"";
+    background-color: black;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    opacity: .7;
+    z-index: -1;
+  }
+  .hero-section3::before{
+    position: absolute;
+    content:"";
+    background-color: black;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    opacity: .7;
+    z-index: -1;
   }
 
 

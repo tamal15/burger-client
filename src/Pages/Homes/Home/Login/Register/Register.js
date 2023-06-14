@@ -64,9 +64,11 @@ const Register = () => {
                             className='w-75 mb-3'  {...register("email", { required: true })} placeholder='Enter Email' /> <br />
                             <input
                             styele={{fontWeight:"500"}}
+                            type='password'
                             className='w-75 mb-3' {...register("password", { required: true })} placeholder='Enter Password' /> <br />
                             <input
                             style={{fontWeight:"500"}}
+                            type="password"
                             className='w-75 mb-3' {...register("password2", { required: true })} placeholder='Re-enter Password' /> <br />
                             <input
                             style={{fontWeight:"500"}}

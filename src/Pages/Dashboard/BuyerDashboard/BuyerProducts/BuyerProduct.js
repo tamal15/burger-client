@@ -35,7 +35,7 @@ const BuyerProduct = () => {
    
 
     useEffect(()=>{
-      fetch(`http://localhost:5000/buyerproducts/${user?.email}`)
+      fetch(`https://burger-backend-production.up.railway.app/buyerproducts/${user?.email}`)
       .then(res=>res.json())
       .then(data=>setService(data))
   },[user?.email])
@@ -43,7 +43,7 @@ const BuyerProduct = () => {
 
     const handleDelete=(id)=>{
       const proceed=window.confirm('are you sure, you want to delete');
-      fetch(`https://boiling-coast-70144.herokuapp.com/deleteProduct/${id}`,{
+      fetch(`https://burger-backend-production.up.railway.app/deleteProduct/${id}`,{
           method:'DELETE'
       }).then(res=>res.json())
       .then(data=>{
@@ -60,7 +60,7 @@ const BuyerProduct = () => {
         <div className=''>
             <div className='d-flex justify-content-between align-items-center my-question-header container'>
                 <h2 style={{fontWeight:"700",color:""}}>My <span className='my-question'>Product</span></h2>
-                <Link to='/dashboard/buyer'>
+                <Link to='/dashboard/buyerUpload'>
                     <button className='btn-style'>Upload Your Product</button>
                 </Link>
             </div>
@@ -86,7 +86,7 @@ const BuyerProduct = () => {
                   <Grid item xs={12} sm={12} md={12}>
                   <div className='photo'>
                     <div className='photoShops'>
-                      <img height="200" width="250" style={{borderRadius:"15px"}} src={single?.img}></img>
+                      <img height="200" width="350" style={{borderRadius:"15px"}} src={single?.img}></img>
                    
                     </div>
                    </div>
@@ -102,8 +102,12 @@ const BuyerProduct = () => {
                       {/* <br /> */}
 
                       <Typography variant="body">
-                        <span style={{ fontWeight: 700 }}> price ৳</span>{" "}
+                        <span style={{ fontWeight: 700 }}> price </span>{" "}
                         {single?.ProductPrice}
+                      </Typography>
+                      <Typography variant="body">
+                        <span style={{ fontWeight: 700 }}> Code </span>{" "}
+                        {single?.code}
                       </Typography>
                       <br />
                       <Rating
@@ -117,13 +121,13 @@ const BuyerProduct = () => {
                 </Grid>
                 <Box sx={{ display: 'flex', justifyContent: 'right' }}>
                   <NavLink
-                    to={`/dashboard/users/update/${single._id}`}
+                    to={`/payment`}
                     style={{ textDecoration: "none", marginRight: "5px" }}
                   >
                     <Button
                      className='btn-style download-btn'
                     size="small">
-                      Edit
+                      Check
                     </Button>
                   </NavLink>
                   <Button

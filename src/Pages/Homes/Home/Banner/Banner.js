@@ -27,7 +27,7 @@ const Banner = () => {
                                    <h1 className="text-white fw-bold  display-2">
                                        <Typewriter
                                            options={{
-                                               strings: ["Reflect Your Patriotism By Wearing Your Traditional Dress With Pride"],
+                                               strings: ["Pizza, Dish Of Italian Origin Consisting Of A Flattened Disk"],
                                                autoStart: true,
                                                loop: true,
                                            }}
@@ -71,7 +71,7 @@ const Banner = () => {
                                    <h1 className="text-white fw-bold  display-2">
                                        <Typewriter
                                            options={{
-                                               strings: ["Reflect Your Patriotism By Wearing Your Traditional Dress With Pride"],
+                                               strings: ["Pizza, Dish Of Italian Origin Consisting Of A Flattened Disk"],
                                                autoStart: true,
                                                loop: true,
                                            }}
@@ -109,7 +109,7 @@ const Banner = () => {
                                    <h1 className="text-white fw-bold  display-2">
                                        <Typewriter
                                            options={{
-                                               strings: ["Reflect Your Patriotism By Wearing Your Traditional Dress With Pride"],
+                                               strings: ["Pizza, Dish Of Italian Origin Consisting Of A Flattened Disk"],
                                                autoStart: true,
                                                loop: true,
                                            }}

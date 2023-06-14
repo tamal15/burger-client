@@ -16,7 +16,7 @@ const BranchName = () => {
         // data.status = 'Pending'
      
 
-        fetch("http://localhost:5000/branch", {
+        fetch("https://burger-backend-production.up.railway.app/branch", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
